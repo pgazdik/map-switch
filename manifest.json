@@ -1,9 +1,10 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "MapSwitch",
   "version": "1.0",
   "permissions": [
     "contextMenus",
+    "tabs",
     "storage"
   ],
   "web_accessible_resources": [
@@ -26,8 +27,6 @@
     }
   ],
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   }
 }

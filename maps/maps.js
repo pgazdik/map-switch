@@ -18,6 +18,13 @@ function handleShowOnMapClick(onEntry, toEntry) {
     window.open(toUrl);
 }
 
+function resolveTargetUrl(template, xyz) {
+    return template
+        .replace("${x}", xyz.x)
+        .replace("${y}", xyz.y)
+        .replace("${z}", xyz.z)
+}
+
 function parseXyz(parsing) {
     if (parsing.type === "href")
         return parseXyzFromHref(parsing);
@@ -74,12 +81,3 @@ function parseXyzFromSearch(parsing) {
         z: z,
     }
 }
-
-
-function resolveTargetUrl(template, xyz) {
-    return template
-        .replace("${x}", xyz.x)
-        .replace("${y}", xyz.y)
-        .replace("${z}", xyz.z)
-}
-
