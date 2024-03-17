@@ -123,7 +123,7 @@ chrome.runtime.onInstalled.addListener(function () {
 			const item = chrome.contextMenus.create({
 				id: uuid,
 				title: "Show on " + toEntry.title,
-				contexts: ["page"],
+				contexts: ["page", "editable"],
 				documentUrlPatterns: [onEntry.urlPattern],
 			})
 			chrome.contextMenus.onClicked.addListener((info, tab) => {
