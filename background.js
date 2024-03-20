@@ -91,6 +91,18 @@ const data = [
 			z: 1
 		},
 		urlTemplate: "https://www.openstreetmap.org/#map=${z}/${y}/${x}"
+	},
+	{
+		title: "Bing",
+		urlPattern: "https://www.bing.com/maps?*",
+		parsing: {
+			type: "href",
+			regex: "cp=(-?[0-9.]+)%7E(-?[0-9.]+)&lvl=([0-9.]+)", // Browser shows ~, but url is shown with %7E instead
+			x: 2,
+			y: 1,
+			z: 3
+		},
+		urlTemplate: null // Don't offer it as target
 	}
 ]
 
@@ -102,8 +114,9 @@ class TheBrain {
 
 		for (const onEntry of data)
 			for (const toEntry of data)
-				if (onEntry != toEntry)
-					this.addNewMenuItem(onEntry, toEntry);
+				if (onEntry.parsing && toEntry.urlTemplate)
+					if (onEntry != toEntry)
+						this.addNewMenuItem(onEntry, toEntry);
 	}
 
 	addNewMenuItem(onEntry, toEntry) {
