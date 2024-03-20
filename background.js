@@ -112,12 +112,14 @@ class TheBrain {
 			id: uuid,
 			title: "Show on " + toEntry.title,
 			contexts: ["page", "editable"],
-			documentUrlPatterns: [onEntry.urlPattern],
+			documentUrlPatterns: [onEntry.urlPattern]
 		})
 		chrome.contextMenus.onClicked.addListener((info, tab) => {
 			if (info.menuItemId === uuid)
 				chrome.tabs.sendMessage(tab.id, { on: onEntry, to: toEntry })
 		})
+
+		// chrome.contextMenus.update("disabledMenuItem", { enabled: true });
 	}
 
 }
