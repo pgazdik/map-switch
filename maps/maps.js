@@ -54,11 +54,19 @@ function parseXyzFromHref(parsing) {
         return null;
     }
 
-    return {
+    const xyz = {
         x: matches[parsing.x],
         y: matches[parsing.y],
         z: matches[parsing.z],
     }
+
+    // Conversion from meters (which Google uses instead of zoom) - https://www.google.com/maps/@45.1404987,10.0038878,6254m
+    // Conversion: Math.log2(CIRCUMFERENCE_OF_EARTH / meters)
+    if (typeof(parsing.zType) !== "undefined")
+        if (parsing.zType === "m")
+            xyz.z = Math.round(Math.log2(40075016 / xyz.z));
+
+    return xyz;
 }
 
 function parseXyzFromSearch(parsing) {
