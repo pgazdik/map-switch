@@ -26,12 +26,13 @@ const data = [
 		urlPattern: "https://*.google.com/maps/*",
 		parsing: {
 			type: "href",
-			//regex: "@(-?[0-9.]+),(-?[0-9.]+),([0-9]+)z",
-			regex: "@(-?[0-9.]+),(-?[0-9.]+),([0-9]+)m",
+			// Google switched to meters and now back to zoom level
+			regex: "@(-?[0-9.]+),(-?[0-9.]+),([0-9]+)z",
+			//regex: "@(-?[0-9.]+),(-?[0-9.]+),([0-9]+)m",
 			x: 2,
 			y: 1,
 			z: 3,
-			zType: "m",
+			//zType: "m",
 		},
 		urlTemplate: "https://www.google.com/maps/@${y},${x},${z}z"
 	},
