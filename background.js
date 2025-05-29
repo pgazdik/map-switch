@@ -38,14 +38,14 @@ const data = [
 	},
 	{
 		title: "Mapy.cz",
-		urlPattern: "https://*.mapy.cz/*",
+		urlPattern: "https://*.mapy.com/*",
 		parsing: {
 			type: "search",
 			x: "x",
 			y: "y",
 			z: "z"
 		},
-		urlTemplate: "https://mapy.cz/turisticka?x=${x}&y=${y}&z=${z}"
+		urlTemplate: "https://mapy.com/turisticka?x=${x}&y=${y}&z=${z}"
 	},
 	{
 		title: "Geocaching",
